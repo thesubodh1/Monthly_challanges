@@ -6,5 +6,5 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("hello world!")
 
-
-
+def february(request):
+    return HttpResponse("this is form feb")

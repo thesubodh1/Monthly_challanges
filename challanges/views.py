@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound,HttpResponseRedirect
+from django.urls import reverse
 
 monthly_challange = {
     "january" : "learn Python",
@@ -29,8 +30,9 @@ def monthly_challange_number(request, month):
         redirect_month=months[month-1]
     except IndexError:
         return HttpResponseNotFound("invalid month")
-    else:
-        return HttpResponseRedirect("/challanges/"+ redirect_month)
+    else: 
+        redirect_path = reverse("month-challanges", args=[redirect_month])
+        return HttpResponseRedirect(redirect_path)
 
 def monthly_challanges(request,month):
     try:

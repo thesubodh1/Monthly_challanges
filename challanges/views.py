@@ -57,6 +57,6 @@ def monthly_challanges(request,month):
         # return HttpResponse(message)
         return render(request,"challanges/challanges.html",{
             "text":challanges,
-            "month" : month.capitalize()
+            "month" : month
         })
     

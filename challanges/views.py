@@ -17,6 +17,18 @@ monthly_challange = {
     "december" : "compleate if any pending"
 }
 
+def landing(request):
+    months = list(monthly_challange.keys())
+    list_items = ""
+
+    for month in months:
+        cap_month = month.capitalize()
+        month_path = reverse("month-challanges",args=[month])
+        list_items += f"<h1><a href=\"{month_path}\">{cap_month}</a></h1>"
+
+    response_message = f"<ul>{list_items}</ul>"
+    return HttpResponse(response_message)
+
 # Create your views here. it also works
 # def monthly_challange_dict(request,month):
 #     if month in monthly_challanges:
@@ -29,7 +41,7 @@ def monthly_challange_number(request, month):
     try:
         redirect_month=months[month-1]
     except IndexError:
-        return HttpResponseNotFound("invalid month")
+        return HttpResponseNotFound("<h1>invalid month</h1>")
     else: 
         redirect_path = reverse("month-challanges", args=[redirect_month])
         return HttpResponseRedirect(redirect_path)
@@ -38,7 +50,8 @@ def monthly_challanges(request,month):
     try:
         challanges = monthly_challange[month]
     except:
-        return HttpResponseNotFound("This month is not supported!!")
+        return HttpResponseNotFound("<h1>This month is not supported!!</h1>")
     else:
-        return HttpResponse(challanges)
+        message = f"<h1>{challanges}</h1>"
+        return HttpResponse(message)
     

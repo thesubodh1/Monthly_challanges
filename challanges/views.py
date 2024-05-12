@@ -23,7 +23,7 @@ def landing(request):
     months = list(monthly_challange.keys())
 
     return render(request, "challanges/index.html", {
-        "month_names": months,
+        "month_names": months
     })
 
 # Create your views here. it also works

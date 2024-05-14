@@ -15,7 +15,7 @@ monthly_challange = {
     "september": "walk for 20 minutes",
     "october": "break",
     "november": "start a new job",
-    "december": "compleate if any pending"
+    "december": None
 }
 
 

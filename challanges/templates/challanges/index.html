@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block "css-links" %}
+<link rel="stylesheet" href="{% static "challanges/challanges.css"%}">
+{% endblock  %}
+
 {% block "page-title" %}Months{% endblock  %}
 
 {% block "page-contents" %}

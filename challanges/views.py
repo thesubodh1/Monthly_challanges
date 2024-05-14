@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import Http404, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
-# from django.template.loader import render_to_string
+from django.template.loader import render_to_string
 
 monthly_challange = {
     "january": "learn Python",
@@ -39,7 +39,9 @@ def monthly_challange_number(request, month):
     try:
         redirect_month = months[month-1]
     except IndexError:
-        return HttpResponseNotFound("<h1>invalid month</h1>")
+        # raise Http404()
+        response_page = render_to_string("404.html")
+        return HttpResponseNotFound(response_page)
     else:
         redirect_path = reverse("month-challanges", args=[redirect_month])
         return HttpResponseRedirect(redirect_path)
@@ -49,7 +51,9 @@ def monthly_challanges(request, month):
     try:
         challanges = monthly_challange[month]
     except:
-        return HttpResponseNotFound("<h1>This month is not supported!!</h1>")
+        # raise Http404() this works while uploading and debug = off
+        response_page = render_to_string("404.html")
+        return HttpResponseNotFound(response_page)
     else:
         # message = render_to_string("challanges/challanges.html")
         # return HttpResponse(message)

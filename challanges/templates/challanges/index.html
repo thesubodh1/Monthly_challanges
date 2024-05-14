@@ -2,6 +2,7 @@
 {% block "page-title" %}Months{% endblock  %}
 
 {% block "page-contents" %}
+{% include "challanges/includes/header.html" %}
     <ul>
         {%for month in month_names%}
         <li><a href="{% url "month-challanges" month %}">{{month|title}}</a></li>

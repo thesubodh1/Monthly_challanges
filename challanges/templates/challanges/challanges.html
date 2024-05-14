@@ -4,7 +4,7 @@
 {% block "css-links" %}
 <link rel="stylesheet" href="{% static "challanges/challange.css"%}">
 <link rel="stylesheet" href="{% static "challanges/includes/header.css"%}">
-{% endblock  %}
+{% endblock  %} 
 
   {% block "page-contents" %}
     {% include "challanges/includes/header.html" %}
@@ -12,7 +12,7 @@
     {% if text != None%}
     <h2>{{text}}</h2>
     {% else %}
-    <p>There is no challange for this month</p>
+    <h2>There is no challange for this month</h2>
     {% endif %}
     {% endblock  %}
  
